@@ -1,0 +1,11 @@
+<mvc:View
+    controllerName="com.esegura.pe.demo.controller.Test"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+>
+    <Page>
+        <content />
+    </Page>
+</mvc:View>

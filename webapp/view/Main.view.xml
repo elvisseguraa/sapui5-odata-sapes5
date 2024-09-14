@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="com.esegura.pe.demo.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+            <Panel
+                id="panelCategories"
+                expandable="true"
+                expanded="true"
+                headerText="Categories"
+                width="auto"
+                class="sapUiResponsiveMargin"
+            >
+                <content>
+                    <List
+                        id="listCategories"
+                        headerText="Categories"
+                        class="sapUiResponsiveMargin"
+                        width="auto"
+                        items="{oDataCategories>/}"
+                    >
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="Categories" />
+                                <ToolbarSpacer />
+                            </Toolbar>
+                        </headerToolbar>
+                        <!-- <items>
+                            <ObjectListItem title="{oDataCategories>Id}">
+                                <ObjectAttribute
+                                    text="{oDataCategories>Name}"
+                                />
+                            </ObjectListItem>
+                        </items> -->
+                        <StandardListItem
+                            title="{oDataCategories>Id}"
+                            description="{oDataCategories>Name}"
+                            type="Navigation"
+                            press="onGoToDetail"
+                        />
+                    </List>
+                </content>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

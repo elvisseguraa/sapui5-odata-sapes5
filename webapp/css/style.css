@@ -1,0 +1,10 @@
+/* Enter your custom styles here */
+/* Enter your custom styles here */
+
+.greenIcon:before {
+  color: green;
+}
+
+.redIcon:before {
+  color: red;
+}

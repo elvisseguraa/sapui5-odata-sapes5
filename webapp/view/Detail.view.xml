@@ -1,0 +1,53 @@
+<mvc:View
+    controllerName="com.esegura.pe.demo.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table"
+    xmlns:c="sap.ui.core"
+>
+    <Page
+        title=""
+        showNavButton="true"
+        navButtonPress=".onNavBack"
+    >
+        <content>
+            <Panel
+                id="panelProducts"
+                expandable="true"
+                expanded="true"
+                headerText="Products"
+                width="auto"
+                class="sapUiResponsiveMargin"
+            >
+                <content>
+                    <List
+                        id="productsList1"
+                        headerText="Products"
+                        class="sapUiResponsiveMargin"
+                        width="auto"
+                        items="{oDataProducts>/}"
+                    >
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="Products" />
+                                <ToolbarSpacer />
+                            </Toolbar>
+                        </headerToolbar>
+                        <items>
+                            <ObjectListItem title="{oDataProducts>Name}">
+                                <firstStatus>
+                                    <ObjectStatus
+                                        text="{ path : 'oDataProducts>Price' }"
+                                    />
+                                </firstStatus>
+                            </ObjectListItem>
+                        </items>
+                    </List>
+                </content>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
