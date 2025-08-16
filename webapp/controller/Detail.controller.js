@@ -19,8 +19,6 @@ sap.ui.define(
   ) {
     "use strict";
 
-    var _that;
-
     return Controller.extend("com.esegura.pe.demo.controller.Detail", {
       onInit: function () {
         const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -40,12 +38,10 @@ sap.ui.define(
 
       listProducts: function (sIdCategory) {
         const oDataModel = this.getOwnerComponent().getModel("oDataSAPService");
-        const oModelProducts = new sap.ui.model.json.JSONModel();
+        const oModelProducts = new JSONModel();
         const panelProducts = this.getView().byId("panelProducts");
 
-        _that = this;
-
-        var oFilter = new sap.ui.model.Filter(
+        const oFilter = new sap.ui.model.Filter(
           "MainCategoryId",
           sap.ui.model.FilterOperator.EQ,
           sIdCategory
@@ -58,7 +54,7 @@ sap.ui.define(
             oModelProducts.setData(oData.results);
 
             panelProducts.setHeaderText(
-              `${panelProducts.getHeaderText()} (${oData.results.length})`
+              `Products (${oData.results.length})`
             );
           },
           error: function (oError) {

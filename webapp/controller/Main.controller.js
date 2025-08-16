@@ -1,15 +1,12 @@
 sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
   "use strict";
 
-  var _that;
-
   return Controller.extend("com.esegura.pe.demo.controller.Main", {
     onInit: function () {
       this.initialization();
     },
 
     initialization: function () {
-      // this.listProducts();
       this.listCategories();
     },
 
@@ -18,15 +15,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       const oModelCategories = new sap.ui.model.json.JSONModel();
       const panelCategories = this.getView().byId("panelCategories");
 
-      _that = this;
-
       oDataModel.read("/MainCategories", {
         success: function (oData, oResponse) {
           console.log("oData", oData);
           oModelCategories.setData(oData.results);
 
           panelCategories.setHeaderText(
-            `${panelCategories.getHeaderText()} (${oData.results.length})`
+            `Categories (${oData.results.length})`
           );
         },
         error: function (oError) {
@@ -42,19 +37,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
     },
 
     navigateToDetail: function (oEvent) {
-      // const oItem = oEvent.getSource();
-
-      const sPath = oEvent.getSource().getBindingContext("oDataCategories").getPath();
-      // const selectedPath = JSON.stringify(oEvent.getSource().getBindingContext("mydata").getProperty(sPath));
-      const selectedPath = oEvent
-        .getSource()
-        .getBindingContext("oDataCategories")
-        .getProperty(sPath);
-
+      const oBindingContext = oEvent.getSource().getBindingContext("oDataCategories");
+      const sPath = oBindingContext.getPath();
+      const selectedPath = oBindingContext.getProperty(sPath);
       const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
       oRouter.navTo("RouteDetail", {
-        // detailPath: window.encodeURIComponent(oItem.getBindingContext("mydata").getPath().substr(1))
         detailPath: window.encodeURIComponent(JSON.stringify(selectedPath)),
       });
     },
